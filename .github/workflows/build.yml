@@ -17,7 +17,7 @@ jobs:
       - run: nimble install -y nimpy nimraylib_now x11 winim
       - run: nim c pyMeow
       - run: |
-          ls **/*.pyd
+          ls ./*.pyd
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -25,4 +25,4 @@ jobs:
           title: "Automatic Build"
           automatic_release_tag: "latest"
           files: | 
-            **/*.pyd
+            ./*.pyd
