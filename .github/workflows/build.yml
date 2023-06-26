@@ -13,13 +13,16 @@ jobs:
           nim-version: 'stable'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Fix Deps Error
-        run: sudo apt install libxcursor-dev libxinerama-dev libxrandr-dev libxi-dev libgl-dev libxxf86vm-dev
+        run: sudo apt-get install -y libxcursor-dev libxinerama-dev libxrandr-dev libxi-dev libgl-dev libxxf86vm-dev
       - run: nimble install -y nimpy nimraylib_now x11 winim
       - run: nim c pyMeow
+      - run: |
+          ls **/*.pyd
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
+          title: "Automatic Build"
           automatic_release_tag: "latest"
-          files: |
-            *.pyd
+          files: | 
+            **/*.pyd
