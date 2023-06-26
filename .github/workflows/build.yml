@@ -25,4 +25,5 @@ jobs:
           title: "Automatic Build"
           automatic_release_tag: "latest"
           files: | 
-            ./pyMeow/*.pyd
+            ./*.pyd
+            ./*.so
